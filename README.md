@@ -1,5 +1,6 @@
 ## Resolve Data Refresh Conflict
-I think you're on the right track with adding a boolean value in the Model. What I think would make this successful is to give the textbox a concept of direction. One approach you could experiment with is to allow incoming value refresh only when the textbox is `ReadOnly`. Then (for example) by double-clicking on the textbox, the direction can be effectively changed to 'outgoing' until the `SendChangeMessage` commit is completed. An additional binding for textbox.ReadOnly has been added to the Model.
+
+I think you're on the right track with adding a boolean value in the Model. What could make this successful is to give the textbox a concept of direction. One approach you could experiment with is to allow incoming value refresh only when the textbox is `ReadOnly`. Then (for example) by double-clicking on the textbox, the direction can be effectively changed to 'outgoing' until the `SendChangeMessage` commit is completed. An additional binding for textbox.ReadOnly has been added to the Model.
 
 [![screenshots][1]][1]
 
@@ -59,7 +60,7 @@ I think you're on the right track with adding a boolean value in the Model. What
     private void SendChangemessage(string text) =>
         MessageBox.Show(text, "Change Message");
 ```
-#### Mock incoming data from server
+#### Mock Update from Server with random values
 
 ```
     protected override void OnLoad(EventArgs e)
@@ -82,8 +83,9 @@ I think you're on the right track with adding a boolean value in the Model. What
     private Random Random { get; } = new Random();
 }
 ```
+___
 
-**Mock Update from Server**
+#### Mock Binding Values class
 
 _Typical view model that can act as a binding context for the entire MainForm_
 
